@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import useSocket from "./hooks/useSocket";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { isConnected, socket } = useSocket();
-
-  useEffect(() => {
-    if (!isConnected) return;
-
-    socket.on("welcome", (data) => {
-      console.log("[ws] welcome", data);
-    });
-  }, [isConnected, socket]);
+  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -31,15 +21,15 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <button>
+        <p>
           Edit <code>src/App.jsx</code> and save to test HMR
-        </button>
+        </p>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
