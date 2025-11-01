@@ -1,18 +1,30 @@
 /* eslint no-restricted-globals: ["error", "event"] */
 /* global document */
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StrictMode } from 'react';
+import { hydrateRoot, createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css'
-import App from './App.jsx'
+import App from './App'
 
-createRoot(document.getElementById('root')).render(
+// Get the root element
+const container = document.getElementById('root');
+
+// Create the app with BrowserRouter
+const AppWithRouter = () => (
   <StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />} />
-      </Routes>
+      <App />
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+// Check if we're doing SSR or client-side rendering
+if (container.hasChildNodes()) {
+  // Hydrate the existing server-rendered markup
+  hydrateRoot(container, <AppWithRouter />);
+} else {
+  // Fallback for client-side only rendering
+  const root = createRoot(container);
+  root.render(<AppWithRouter />);
+}
