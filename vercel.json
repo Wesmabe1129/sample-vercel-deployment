@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "server.js",
+            "src": "dist/server/server-entry.js",
             "use": "@vercel/node"
         },
         {
@@ -12,12 +12,12 @@
     ],
     "routes": [
         {
-            "src": "/socket.io/(.*)",
-            "dest": "/server.js"
+            "src": "/socket.io/.*",
+            "dest": "/dist/server/server-entry.js"
         },
         {
             "src": "/(.*)",
-            "dest": "/server.js"
+            "dest": "/dist/server/server-entry.js"
         }
     ]
 }

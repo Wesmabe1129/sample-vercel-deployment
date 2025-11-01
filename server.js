@@ -1,59 +1,50 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import express from 'express';
 import { createServer } from 'node:http';
-import { createServer as createViteServer } from 'vite';
-
-const IS_PRODUCTION = process.env.ENV === 'production';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { Server } from 'socket.io';
 
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
-// For production: serve static client files
-if (IS_PRODUCTION) {
-  app.use(express.static(path.resolve(__dirname, './dist/client')));
-} else {
-  const vite = await createViteServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-  });
-  app.use(vite.middlewares);
-}
+// For Vercel serverless, we need to handle both HTTP and WebSocket connections
+app.use(express.static('dist/client'));
 
-// Main SSR route
-app.use('*', async (req, res, next) => {
-  try {
-    const url = req.originalUrl;
-    const indexHtmlPath = path.resolve(
-      __dirname,
-      IS_PRODUCTION ? './dist/client/index.html' : './index.html'
-    );
-    const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
-
-    let template = indexHtml;
-    let render;
-
-    if (IS_PRODUCTION) {
-      const mod = await import('./dist/server/server-entry.js');
-      render = mod.render;
-    } else {
-      const vite = await createViteServer({
-        server: { middlewareMode: true },
-        appType: 'custom',
-      });
-      template = await vite.transformIndexHtml(url, indexHtml);
-      render = (await vite.ssrLoadModule('/src/server-entry.jsx')).render;
-    }
-
-    const appHtml = render(url, {});
-    const html = template.replace('<!-- ssr -->', appHtml);
-
-    res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-  } catch (e) {
-    next(e);
-  }
+// Socket.io connection handler
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.emit('welcome', 'A message from the server');
 });
 
-// Export for Vercel (do NOT call listen)
-export default app;
+// Export as Vercel serverless function
+export default async (req, res) => {
+  // For Socket.io, we need to handle upgrade requests
+  if (req.url.includes('socket.io')) {
+    // Let Socket.io handle the request
+    return;
+  }
+  
+  // Handle SSR requests
+  try {
+    const { render } = await import('../dist/server/server-entry.js');
+    const context = {};
+    const appHtml = render(req.url, context);
+    
+    const template = `<!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Vite App</title>
+        </head>
+        <body>
+          <div id="root">${appHtml}</div>
+          <script type="module" src="/client/assets/index.js"></script>
+        </body>
+      </html>`;
+    
+    res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+  } catch (error) {
+    console.error('SSR Error:', error);
+    res.status(500).end('Internal Server Error');
+  }
+};
