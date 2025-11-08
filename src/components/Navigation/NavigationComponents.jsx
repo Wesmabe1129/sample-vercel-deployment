@@ -8,40 +8,35 @@ import contactsImg from "../../assets/contacts.png";
 
 const NavigationComponents = () => {
   return (
-    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-6 bg-white p-4 rounded-[12px] shadow-lg z-50">
-      <button className="p-3 rounded-[8px] bg-teal-600 hover:bg-teal-700 transition">
-        <div className="flex items-center gap-4 text-white">
-          <img src={homeImg} alt="Home" className="w-8 h-8" />
-          <span>Home</span>
-        </div>
+    <div className="fixed w-full px-18 sm:w-auto sm:px-0 justify-center bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 sm:gap-4 bg-blur p-2 sm:p-4 rounded-[12px] shadow-lg z-50 overflow-x-auto">
+      {/* Home */}
+      <button className="p-2 sm:p-3 rounded-[4px] sm:rounded-[8px] bg-teal-600 hover:bg-teal-700 transition flex items-center gap-4 sm:gap-4">
+        <img src={homeImg} alt="Home" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <span className="hidden sm:inline text-white">Home</span>
       </button>
 
-      <button className="p-3 rounded-[8px] bg-teal-600 hover:bg-teal-700 transition">
-        <div className="flex items-center gap-4 text-white">
-          <img src={aboutImg} alt="About" className="w-8 h-8" />
-          <span>About</span>
-        </div>
+      {/* About */}
+      <button className="p-2 sm:p-3 rounded-[4px] sm:rounded-[8px] bg-teal-600 hover:bg-teal-700 transition flex items-center gap-2 sm:gap-4">
+        <img src={aboutImg} alt="About" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <span className="hidden sm:inline text-white">About</span>
       </button>
 
-      <button className="p-3 rounded-[8px] bg-teal-600 hover:bg-teal-700 transition">
-        <div className="flex items-center gap-4 text-white">
-          <img src={projectsImg} alt="Projects" className="w-8 h-8" />
-          <span>Projects</span>
-        </div>
+      {/* Projects */}
+      <button className="p-2 sm:p-3 rounded-[4px] sm:rounded-[8px] bg-teal-600 hover:bg-teal-700 transition flex items-center gap-2 sm:gap-4">
+        <img src={projectsImg} alt="Projects" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <span className="hidden sm:inline text-white">Projects</span>
       </button>
 
-      <button className="p-3 rounded-[8px] bg-teal-600 hover:bg-teal-700 transition">
-        <div className="flex items-center gap-4 text-white">
-          <img src={skillsImg} alt="Skills" className="w-8 h-8" />
-          <span>Skills</span>
-        </div>
+      {/* Skills */}
+      <button className="p-2 sm:p-3 rounded-[4px] sm:rounded-[8px] bg-teal-600 hover:bg-teal-700 transition flex items-center gap-2 sm:gap-4">
+        <img src={skillsImg} alt="Skills" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <span className="hidden sm:inline text-white">Skills</span>
       </button>
 
-      <button className="p-3 rounded-[8px] bg-teal-600 hover:bg-teal-700 transition">
-        <div className="flex items-center gap-4 text-white">
-          <img src={contactsImg} alt="Contacts" className="w-8 h-8" />
-          <span>Contacts</span>
-        </div>
+      {/* Contacts */}
+      <button className="p-2 sm:p-3 rounded-[4px] sm:rounded-[8px] bg-teal-600 hover:bg-teal-700 transition flex items-center gap-2 sm:gap-4">
+        <img src={contactsImg} alt="Contacts" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <span className="hidden sm:inline text-white">Contacts</span>
       </button>
     </div>
   );
