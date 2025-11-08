@@ -8,8 +8,10 @@ function Default() {
   return (
     <>
       {/* <Header /> */}
+
+      {/* Navigation Components */}
       <nav className="container mx-auto justify-center align-center text-center">
-        {/* <NavigationComponents /> */}
+        <NavigationComponents />
       </nav>
       <main className="">
         <Outlet /> {/* This renders the matched child route */}
