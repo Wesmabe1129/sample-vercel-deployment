@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center w-screen min-h-screen bg-gray-100 font-sans">
       {/* Cover Photo */}
-      <div className="w-full h-20 md:h-40 l:h-60 bg-gray-300 relative ">
+      <div className="w-full h-32 md:h-48 l:h-60 bg-gray-300 relative ">
         {/* Profile Picture */}
         <div className="absolute left ml-8 -bottom-24 transform -translate-x-1 w-32 h-32 rounded-full bg-gray-400 border-4 border-white"></div>
         
