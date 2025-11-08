@@ -16,7 +16,7 @@ function App() {
         <Routes>
           {/* Layout with nested routes */}
           <Route path="/" element={<Layout />}>
-            <Route path="home" element={<Home />} />
+            <Route index element={<Home />} />
             {/* <Route path="search" element={<Search />} /> */}
             {/* <Route path="result" element={<Result />} /> */}
             {/* <Route path="print-document" element={<Sample />} /> */}
