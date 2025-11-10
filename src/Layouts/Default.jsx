@@ -6,7 +6,7 @@ import NavigationComponents from "../components/Navigation/NavigationComponents"
 
 function Default() {
   return (
-    <>
+    <div className="scroll-smooth">
       {/* <Header /> */}
 
       {/* Navigation Components */}
@@ -17,7 +17,7 @@ function Default() {
         <Outlet /> {/* This renders the matched child route */}
       </main>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 

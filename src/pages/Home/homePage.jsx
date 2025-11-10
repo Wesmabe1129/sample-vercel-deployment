@@ -49,35 +49,59 @@
 
 import React from "react";
 import profilePic from "../../assets/profiles.jpg";
+import About from "../About/about";
+import Projects from "../Projects/projects";
+import Skills from "../Skills/skills";
+import Contacts from "../Contacts/contacts";
 
 const Home = () => {
   return (
     <div className="min-h-screen w-screen bg-gray-100 flex justify-center items-start sm:px-12 text-black">
       <div className="bg-black-100 w-full max-w-4xl">
         {/* Header */}
-        <div className="bg-[#16476A] h-32 sm:h-48 relative">
-          <img
-            src={profilePic}
-            alt="Wilson Esmabe smiling in a professional portrait"
-            className="absolute left-2 sm:left-8 -bottom-8 sm:-bottom-16 w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white object-cover"
-          />
-          {/* Profile Info */}
-          <div className="absolute left-2 -bottom-24 sm:left-40 sm:-bottom-12 text-black">
-            <h1 className="text-lg sm:2xl font-bold">Wilson Esmabe</h1>
-            <h2 className="sm:pl-2 whitespace-nowrap overflow-hidden border-r border-black text-xl font-bold font-mono w-[13.2ch] animate-typeErase animate-blink">
-              <span>Web </span>
-              <span className="text-green-800">Developer</span>
-            </h2>
+        <div id="home" className="min-h-screen">
+          <div className="bg-[#16476A] sm:rounded-b-lg h-32 sm:h-48 relative">
+            <img
+              src={profilePic}
+              alt="Wilson Esmabe smiling in a professional portrait"
+              className="absolute left-2 sm:left-8 -bottom-8 sm:-bottom-20 w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white object-cover"
+            />
+            {/* Profile Info */}
+            <div className="absolute left-2 -bottom-24 sm:left-44 sm:-bottom-16 text-black">
+              <h1 className="text-lg sm:2xl font-bold">Wilson Esmabe</h1>
+              <h2 className="sm:pl-2 whitespace-nowrap overflow-hidden border-r border-black text-xl font-bold font-mono w-[13.2ch] animate-typeErase animate-blink">
+                <span>Web </span>
+                <span className="text-green-800">Developer</span>
+              </h2>
+            </div>
+            {/* LANGUAGES */}
+            <div className="absolute right-4 sm:right-8 bottom-4 sm:-bottom-16 flex gap-3">
+
+              {/* Circle #1 */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-red-500 rounded-full shadow-md"></div>
+
+              {/* Circle #2 */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full shadow-md"></div>
+
+              {/* Circle #3 */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full shadow-md"></div>
+
+            </div>
+          </div>
+          {/* Content Placeholders */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-[1fr_1.5fr] gap-6 px-4 py-28 sm:px-8 sm:py-18 sm:mb-8">
+            <div className="h-48 bg-gray-200 rounded-lg"></div>
+            <div className="h-48 bg-gray-200 rounded-lg"></div>
           </div>
         </div>
 
-        {/* Content Placeholders */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-28 sm:px-8 sm:py-16 sm:mb-8">
-          <div className="h-48 bg-gray-200 rounded-lg"></div>
-          <div className="h-48 bg-gray-200 rounded-lg"></div>
-        </div>
 
-        {/* Floating Navigation could go here */}
+        <main>
+          <About />
+          <Projects />
+          <Skills />
+          <Contacts />
+        </main>
       </div>
     </div>
   );
