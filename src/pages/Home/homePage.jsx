@@ -54,10 +54,15 @@ import Projects from "../Projects/projects";
 import Skills from "../Skills/skills";
 import Contacts from "../Contacts/contacts";
 
+import nodejsImg from "../../assets/nodejs.png";
+import reactjsImg from "../../assets/react.png";
+import tailwindImg from "../../assets/tailwind.png"
+import nextJsImg from "../../assets/nextjs.jpeg";
+
 const Home = () => {
   return (
-    <div className="min-h-screen w-screen bg-gray-100 flex justify-center items-start sm:px-12 text-black">
-      <div className="bg-black-100 w-full max-w-4xl">
+    <div className="min-h-screen w-screen bg-gray-100 flex justify-center items-start sm:px-12 lg:px-32 text-black">
+      <div className="bg-black-100 w-full lg:w-screen">
         {/* Header */}
         <div id="home" className="min-h-screen">
           <div className="bg-[#16476A] sm:rounded-b-lg h-32 sm:h-48 relative">
@@ -76,22 +81,58 @@ const Home = () => {
             </div>
             {/* LANGUAGES */}
             <div className="absolute right-4 sm:right-8 bottom-4 sm:-bottom-16 flex gap-3">
+              <div className="relative">
+                <div className="flex gap-2">
+                  <img src={nodejsImg} className="w-6 h-6 sm:w-10 sm:h-10 bg-red-500 rounded-full shadow-md"></img>
 
-              {/* Circle #1 */}
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-red-500 rounded-full shadow-md"></div>
+                  {/* Circle #2 */}
+                  <img src={reactjsImg} className="w-6 h-6 sm:w-10 sm:h-10 bg-green-500 rounded-full shadow-md"></img>
 
-              {/* Circle #2 */}
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full shadow-md"></div>
-
-              {/* Circle #3 */}
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full shadow-md"></div>
-
+                  {/* Circle #3 */}
+                  <img src={nextJsImg} className="w-6 h-6 sm:w-10 sm:h-10 bg-blue-500 rounded-full shadow-md"></img>
+                  <img src={tailwindImg} className="w-6 h-6 sm:w-10 sm:h-10 bg-blue-500 rounded-full shadow-md"></img>
+                  {/* <img className="w-6 h-6 sm:w-10 sm:h-10 bg-blue-500 rounded-full shadow-md"></img> */}
+                </div>
+                {/* Circle #1 */}
+                <span className="font-small">Languages</span>
+              </div>
             </div>
           </div>
+
           {/* Content Placeholders */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-[1fr_1.5fr] gap-6 px-4 py-28 sm:px-8 sm:py-18 sm:mb-8">
-            <div className="h-48 bg-gray-200 rounded-lg"></div>
-            <div className="h-48 bg-gray-200 rounded-lg"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.5fr] gap-6 px-4 py-28 sm:px-8 sm:py-18 sm:mb-8">
+          
+            {/* INFO */}
+            <div className="h-48 bg-gray-200 rounded-lg p-4 
+              flex flex-col justify-between
+              transition-all duration-300 
+               hover:shadow-xl hover:bg-gray-100
+              cursor-pointer overflow-hidden">
+              <h1 className="text-lg font-semibold">Info</h1>
+
+              {/* <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></span> */}
+
+              <p>I started coding out of curiosity
+                just wanting to know how things worked.
+                One small experiment turned into a passion, 
+                and now I turn ideas into clean, scalable web experiences.
+              </p>
+              {/* <h1 className="text-lg font-semibold">Info</h1> */}
+            </div>
+
+            {/* BLOG */}
+            <div className="h-48 bg-gray-200 rounded-lg p-4 
+              flex flex-col justify-between
+              transition-all duration-300 
+               hover:shadow-xl hover:bg-gray-100
+              cursor-pointer overflow-hidden">
+
+              {/* <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></span> */}
+
+              <h1 className="text-lg font-semibold">Blog</h1>
+              <p>A look into my journey with creativity, code, and the problem-solving that keeps me challenged.</p>
+            </div>
+
           </div>
         </div>
 
